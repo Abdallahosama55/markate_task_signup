@@ -1,0 +1,41 @@
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../App.css';
+import SignupPage from './../pages/SignupPage/SignupPage';
+import ConfirmationPage from './../pages/confirmation/ConfirmationPage';
+import  StoreInformation from './../pages/StoreInformation/StoreInformation';
+
+function SignupPages() {
+  const [activeStep, setActiveStep] = useState(0);
+
+  const nextStep = () => {
+    setActiveStep((current) => current + 1);
+  };
+
+  const renderForm = () => {
+    switch (activeStep) {
+      case 0:
+        return <SignupPage activeStep={activeStep} nextStep={nextStep} />;
+
+      case 1:
+        return <ConfirmationPage activeStep={activeStep} nextStep={nextStep} />;
+
+      case 2:
+        
+      
+     return <StoreInformation activeStep={activeStep} nextStep={nextStep}/>
+      
+      
+      
+      
+      }
+  };
+
+  return (
+    <div className='SignupPages'>
+      <div className='row justify-content-center align-items-center'>{renderForm()}</div>
+    </div>
+  );
+}
+
+export default  SignupPages;
